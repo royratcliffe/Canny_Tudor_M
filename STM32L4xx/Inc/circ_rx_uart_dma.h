@@ -41,11 +41,14 @@ UARTHandle_t xUARTDMAForCircRx(CircRxHandle_t xCircRx);
 /*!
  * \brief Creates a new circular receiver.
  *
- * Use as follows where `handler` identifies a relay transmission function, i.e. somewhere to pass bytes on successful receipt. The `NULL` passes to the function's first parameter, and ignored in this excerpt.
+ * Use as follows where `handler` identifies a relay transmission function, i.e.
+ * somewhere to pass bytes on successful receipt. The `NULL` passes to the
+ * function's first parameter, and ignored in this excerpt.
  * \code{.c}
  * xCircRxUARTDMACreate(&hlpuart1, NULL, handler);
  * \encode
- * Uses dynamic memory for space allocation. Expression `&lpuart1` identifies the low-power UART channel to wire up for receiving using DMA.
- * The channel needs a circular DMA channel.
+ * Uses dynamic memory for space allocation. Expression `&lpuart1` identifies
+ * the low-power UART channel to wire up for receiving using DMA. The channel
+ * needs a circular DMA channel.
  */
 CircRxHandle_t xCircRxUARTDMACreate(UARTHandle_t xUART, void *pvSender, TxHandler_t Handler);

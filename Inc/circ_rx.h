@@ -38,7 +38,8 @@ typedef void *CircRxHandle_t;
  * \brief Sends data.
  *
  * The circular receiver _sends_ its data onward to some other relay or sink but
- * remains agnostic about who or what that might be. Does nothing if no handler assigned as yet.
+ * remains agnostic about who or what that might be. Does nothing if no handler
+ * assigned as yet.
  */
 void vCircRxSend(CircRxHandle_t xCircRx, const void *pvTxData, size_t xDataLengthBytes);
 

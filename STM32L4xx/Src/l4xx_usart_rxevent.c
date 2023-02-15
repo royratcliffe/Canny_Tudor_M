@@ -1,6 +1,6 @@
 /*
- * l4xx_usart_rxevent.c
- * Copyright (c) 2023, Roy Ratcliffe, Northumberland, United Kingdom
+ * \file l4xx_usart_rxevent.c
+ * \attention Copyright (c) 2023, Roy Ratcliffe, Northumberland, United Kingdom
  *
  * Permission is hereby granted, free of charge,  to any person obtaining a
  * copy  of  this  software  and    associated   documentation  files  (the
@@ -30,7 +30,9 @@
 static struct hand_side *pRxEventForUART[l4xx_usartMAX_INSTANCES];
 
 /*
- * Left-hand side matches the UART handle, right-hand side matches the handler. Match the incoming UART handle against the left-hand side and invoke the right-hand side handler.
+ * Left-hand side matches the UART handle, right-hand side matches the handler.
+ * Match the incoming UART handle against the left-hand side and invoke the
+ * right-hand side handler.
  */
 #if USE_HAL_UART_REGISTER_CALLBACKS
 static void prvRxEvent(UARTHandle_t xUART, uint16_t usXfer)

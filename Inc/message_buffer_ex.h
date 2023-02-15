@@ -33,7 +33,7 @@
  * \param ppvRxData Pointer to dynamic buffer pointer. Must not be `NULL`. Free
  * the buffer after processing the message using pvPortFree().
  * \param xTicksToWait How long to wait for the next message in ticks.
- * \returns Number of bytes received, equal to the size of the message and the
+ * \retval Number of bytes received, equal to the size of the message and the
  * number of bytes waiting in the heap-allocated dynamic buffer. Answers zero if
  * memory allocation fails.
  *
@@ -52,7 +52,7 @@ size_t xMessageBufferReceiveAll(MessageBufferHandle_t xMessageBuffer, void **ppv
  * bytes. Typically points to an automatic stack-allocated buffer space else
  * some pre-allocated block of heap.
  *
- * \returns Number of bytes received. The answer _could_ be zero if the message
+ * \retval Number of bytes received. The answer _could_ be zero if the message
  * buffer contains a zero-length message.
  *
  * The implementation relies on the all-or-nothing interface deployed by message

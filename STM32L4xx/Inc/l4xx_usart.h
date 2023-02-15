@@ -31,7 +31,7 @@
 /*!
  * \brief USART instance to eight-bit cardinal, very quickly.
  * \param pUSART Pointer to peripheral base address.
- * \returns Zero-based cardinal number for USART; 0 for LPUART1 in the low-power
+ * \retval Zero-based cardinal number for USART; 0 for LPUART1 in the low-power
  * peripheral range, 1 for USART2, 2 for USART3, etc. Always answers less than
  * unsigned value of `l4xx_usartMAX_INSTANCES` manifest constant.
  *
@@ -47,7 +47,7 @@ uint8_t ucCardinalForUSART(USART_TypeDef *pUSART);
 
 /*!
  * \brief USART address to eight-bit ordinal.
- * \returns One-based ordinal number for USART.
+ * \retval One-based ordinal number for USART.
  *
  * Answers between 1U and `l4xx_usartMAX_INSTANCES` inclusive.
  */
