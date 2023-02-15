@@ -34,6 +34,10 @@
 
 #define circrx_uartdmaPRIORITY 16U
 
+#ifndef circrx_uartdmaSTACK_DEPTH
+#define circrx_uartdmaSTACK_DEPTH (configMINIMAL_STACK_SIZE + circrx_uartdmaBUFFER_LENGTH_BYTES)
+#endif
+
 CircRxHandle_t xCircRxForUARTDMA(UARTHandle_t xUART);
 
 UARTHandle_t xUARTDMAForCircRx(CircRxHandle_t xCircRx);

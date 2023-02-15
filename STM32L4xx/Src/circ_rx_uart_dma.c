@@ -60,7 +60,7 @@ CircRxHandle_t xCircRxUARTDMACreate(UARTHandle_t xUART, void *pvSender, TxHandle
 	CircRxHandle_t xCircRx = xCircRxCreate(pvSender, Handler);
 	push_hand_side(&pCircRxForUARTDMA, xUART, xCircRx);
 	TaskHandle_t xTask;
-	xTaskCreate(prvCircRxUARTDMATask, "circrxUARTDMA", configMINIMAL_STACK_SIZE + circrx_uartdmaBUFFER_LENGTH_BYTES, xCircRx, circrx_uartdmaPRIORITY, &xTask);
+	xTaskCreate(prvCircRxUARTDMATask, "circrxUARTDMA", circrx_uartdmaSTACK_DEPTH, xCircRx, circrx_uartdmaPRIORITY, &xTask);
 	configASSERT(xTask != NULL);
 	vCircRxTaskHandle(xCircRx, xTask);
 	vUSARTRegisterRxEvent(xUART, prvRxEvent);
