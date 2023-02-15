@@ -50,7 +50,7 @@ UARTHandle_t xUARTDMAForCircRx(CircRxHandle_t xCircRx);
  * function's first parameter, and ignored in this excerpt.
  * \code{.c}
  * xCircRxUARTDMACreate(&hlpuart1, NULL, handler);
- * \encode
+ * \endcode
  * Uses dynamic memory for space allocation. Expression `&lpuart1` identifies
  * the low-power UART channel to wire up for receiving using DMA. The channel
  * needs a circular DMA channel.
