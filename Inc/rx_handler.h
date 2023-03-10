@@ -39,16 +39,16 @@
  * buffered span of octets, where as the size returned describes the number of
  * frame octets.
  */
-typedef size_t (*RxHandler_t)(void *pvReceiver, void *pvRxData, size_t xBufferLengthBytes);
+typedef size_t (*RxHandler_t)(void *pvReceiver, void *pvRxBuffer, size_t xBufferLengthBytes);
 
 /*!
  * \brief Receives one complete message from a message buffer.
  *
  * The message could be empty, have zero length.
  */
-size_t xRxMessageBufferHandler(void *pvMessageBuffer, void *pvRxData, size_t xBufferLengthBytes);
+size_t xRxMessageBufferHandler(void *pvMessageBuffer, void *pvRxBuffer, size_t xBufferLengthBytes);
 
 /*!
  * \brief Receives zero or more data bytes from a stream buffer.
  */
-size_t xRxStreamBufferHandler(void *pvStreamBuffer, void *pvRxData, size_t xBufferLengthBytes);
+size_t xRxStreamBufferHandler(void *pvStreamBuffer, void *pvRxBuffer, size_t xBufferLengthBytes);

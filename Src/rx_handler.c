@@ -27,12 +27,12 @@
 #include "FreeRTOS.h"
 #include "message_buffer.h"
 
-size_t xRxMessageBufferHandler(void *pvMessageBuffer, void *pvRxData, size_t xBufferLengthBytes)
+size_t xRxMessageBufferHandler(void *pvMessageBuffer, void *pvRxBuffer, size_t xBufferLengthBytes)
 {
-	return xMessageBufferReceive(pvMessageBuffer, pvRxData, xBufferLengthBytes, portMAX_DELAY);
+	return xMessageBufferReceive(pvMessageBuffer, pvRxBuffer, xBufferLengthBytes, portMAX_DELAY);
 }
 
-size_t xRxStreamBufferHandler(void *pvStreamBuffer, void *pvRxData, size_t xBufferLengthBytes)
+size_t xRxStreamBufferHandler(void *pvStreamBuffer, void *pvRxBuffer, size_t xBufferLengthBytes)
 {
-	return xStreamBufferReceive(pvStreamBuffer, pvRxData, xBufferLengthBytes, portMAX_DELAY);
+	return xStreamBufferReceive(pvStreamBuffer, pvRxBuffer, xBufferLengthBytes, portMAX_DELAY);
 }
