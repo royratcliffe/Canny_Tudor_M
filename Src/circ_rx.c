@@ -42,7 +42,7 @@ void vCircRxSend(CircRxHandle_t xCircRx, const void *pvTxData, size_t xDataLengt
 	(*pxCircRx->Handler)(pxCircRx->pvSender, pvTxData, xDataLengthBytes);
 }
 
-void vCircRx(CircRxHandle_t xCircRx, uint8_t *ucRxData, size_t xBufferLengthBytes)
+void vCircRx(CircRxHandle_t xCircRx, void *pvRxBuffer, size_t xBufferLengthBytes)
 {
 	uint32_t ul = 0UL;
 	for (;;)
@@ -51,11 +51,11 @@ void vCircRx(CircRxHandle_t xCircRx, uint8_t *ucRxData, size_t xBufferLengthByte
 		xTaskNotifyWait(0UL, ULONG_MAX, &ulNotified, portMAX_DELAY);
 		if (ul == ulNotified) continue;
 		if (ulNotified > ul)
-			vCircRxSend(xCircRx, ucRxData + ul, ulNotified - ul);
+			vCircRxSend(xCircRx, (uint8_t *)pvRxBuffer + ul, ulNotified - ul);
 		else
 		{
-			vCircRxSend(xCircRx, ucRxData + ul, xBufferLengthBytes - ul);
-			vCircRxSend(xCircRx, ucRxData, ulNotified);
+			vCircRxSend(xCircRx, (uint8_t *)pvRxBuffer + ul, xBufferLengthBytes - ul);
+			vCircRxSend(xCircRx, pvRxBuffer, ulNotified);
 		}
 		ul = ulNotified;
 	}

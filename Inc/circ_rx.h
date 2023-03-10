@@ -51,7 +51,7 @@ void vCircRxSend(CircRxHandle_t xCircRx, const void *pvTxData, size_t xDataLengt
  * and stores the running transfer offset and the circular transfer buffer on
  * the task stack.
  */
-void vCircRx(CircRxHandle_t xCircRx, uint8_t *ucRxData, size_t xBufferLengthBytes);
+void vCircRx(CircRxHandle_t xCircRx, void *pvRxBuffer, size_t xBufferLengthBytes);
 
 /*!
  * \brief Creates a new dynamically-allocated circular receiver.
