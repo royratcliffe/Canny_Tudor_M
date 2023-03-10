@@ -71,6 +71,18 @@ CircRxHandle_t xCircRxCreate(void *pvSender, TxHandler_t Handler)
 	return pxCircRx;
 }
 
+TaskHandle_t xCircRxTaskHandle(CircRxHandle_t xCircRx)
+{
+	CircRx_t *pxCircRx = xCircRx;
+	return pxCircRx->xTask;
+}
+
+void vCircRxTaskHandle(CircRxHandle_t xCircRx, TaskHandle_t xTask)
+{
+	CircRx_t *pxCircRx = xCircRx;
+	pxCircRx->xTask = xTask;
+}
+
 static void prvStreamBufferSend(void *pvSender, const void *pvTxData, size_t xDataLengthBytes)
 {
 	(void)xStreamBufferSend(pvSender, pvTxData, xDataLengthBytes, portMAX_DELAY);
