@@ -28,7 +28,9 @@
 
 #include "l4xx_uart.h"
 
+#ifndef circrx_uartdmaBUFFER_LENGTH_BYTES
 #define circrx_uartdmaBUFFER_LENGTH_BYTES 32U
+#endif
 
 #define circrx_uartdmaDELAY_TICKS 1U
 
