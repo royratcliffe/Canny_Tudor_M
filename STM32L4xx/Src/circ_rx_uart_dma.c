@@ -55,9 +55,9 @@ static void prvRxEvent(UARTHandle_t xUART, uint16_t usXfer)
 	if (xCircRx) xTaskNotifyFromISR(xCircRxTaskHandle(xCircRx), usXfer, eSetValueWithOverwrite, NULL);
 }
 
-CircRxHandle_t xCircRxUARTDMACreate(UARTHandle_t xUART, void *pvSender, TxHandler_t Handler)
+CircRxHandle_t xCircRxUARTDMACreate(UARTHandle_t xUART, void *pvSender, TxHandler_t xHandler)
 {
-	CircRxHandle_t xCircRx = xCircRxCreate(pvSender, Handler);
+	CircRxHandle_t xCircRx = xCircRxCreate(pvSender, xHandler);
 	push_hand_side(&pCircRxForUARTDMA, xUART, xCircRx);
 	TaskHandle_t xTask;
 	xTaskCreate(prvCircRxUARTDMATask, "circrxUARTDMA", circrx_uartdmaSTACK_DEPTH, xCircRx, circrx_uartdmaPRIORITY, &xTask);

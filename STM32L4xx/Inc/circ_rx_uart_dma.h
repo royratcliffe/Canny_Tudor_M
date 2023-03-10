@@ -55,4 +55,4 @@ UARTHandle_t xUARTDMAForCircRx(CircRxHandle_t xCircRx);
  * the low-power UART channel to wire up for receiving using DMA. The channel
  * needs a circular DMA channel.
  */
-CircRxHandle_t xCircRxUARTDMACreate(UARTHandle_t xUART, void *pvSender, TxHandler_t Handler);
+CircRxHandle_t xCircRxUARTDMACreate(UARTHandle_t xUART, void *pvSender, TxHandler_t xHandler);
