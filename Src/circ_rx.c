@@ -48,17 +48,17 @@ void vCircRx(CircRxHandle_t xCircRx, void *pvRxBuffer, size_t xBufferLengthBytes
 	uint32_t ul = 0UL;
 	for (;;)
 	{
-		uint32_t ulNotified;
-		xTaskNotifyWait(0UL, ULONG_MAX, &ulNotified, portMAX_DELAY);
-		if (ul == ulNotified) continue;
-		if (ulNotified > ul)
-			vCircRxSend(xCircRx, (uint8_t *)pvRxBuffer + ul, ulNotified - ul);
+		uint32_t ulXfer;
+		xTaskNotifyWait(0UL, ULONG_MAX, &ulXfer, portMAX_DELAY);
+		if (ul == ulXfer) continue;
+		if (ulXfer > ul)
+			vCircRxSend(xCircRx, (uint8_t *)pvRxBuffer + ul, ulXfer - ul);
 		else
 		{
 			vCircRxSend(xCircRx, (uint8_t *)pvRxBuffer + ul, xBufferLengthBytes - ul);
-			vCircRxSend(xCircRx, pvRxBuffer, ulNotified);
+			vCircRxSend(xCircRx, pvRxBuffer, ulXfer);
 		}
-		ul = ulNotified;
+		ul = ulXfer;
 	}
 }
 
