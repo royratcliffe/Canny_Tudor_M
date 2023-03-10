@@ -44,6 +44,9 @@ UARTHandle_t xUARTDMAForCircRx(CircRxHandle_t xCircRx);
 
 /*!
  * \brief Creates a new circular receiver.
+ * \param pvSender User data for target of outgoing data bytes.
+ * \param xHandler Transmit relay handler.
+ * \retval Newly-allocated circular receiver wired up for UART reception via DMA.
  *
  * Use as follows where `handler` identifies a relay transmission function, i.e.
  * somewhere to pass bytes on successful receipt. The `NULL` passes to the

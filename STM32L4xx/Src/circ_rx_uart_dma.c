@@ -49,6 +49,12 @@ static portTASK_FUNCTION(prvCircRxUARTDMATask, pvParameters)
 	vCircRx(xCircRx, ucData, sizeof(ucData));
 }
 
+/*
+ * The receive event handler requires the circular receiver's task handle.
+ * Access to the handle requires, in turn, an association between the event UART
+ * and the task. Hence an extra indirection becomes necessary: from UART to
+ * event handler then from UART to circular receiver.
+ */
 static void prvRxEvent(UARTHandle_t xUART, uint16_t usXfer)
 {
 	CircRxHandle_t xCircRx = xCircRxForUARTDMA(xUART);
