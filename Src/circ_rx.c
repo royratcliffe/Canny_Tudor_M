@@ -37,6 +37,7 @@ typedef struct CircRx CircRx_t;
 
 void vCircRxSend(CircRxHandle_t xCircRx, const void *pvTxData, size_t xDataLengthBytes)
 {
+	if (xDataLengthBytes == 0UL) return;
 	CircRx_t *pxCircRx = xCircRx;
 	if (pxCircRx->Handler == NULL) return;
 	(*pxCircRx->Handler)(pxCircRx->pvSender, pvTxData, xDataLengthBytes);
@@ -95,14 +96,7 @@ void vCircRxStreamBuffer(CircRxHandle_t xCircRx, StreamBufferHandle_t xStreamBuf
 	pxCircRx->pvSender = xStreamBuffer;
 }
 
-TaskHandle_t xCircRxTaskHandle(CircRxHandle_t xCircRx)
+BaseType_t xCircRxNotifyFromISR(CircRxHandle_t xCircRx, UBaseType_t ulXfer, BaseType_t *pxWoken)
 {
-	CircRx_t *pxCircRx = xCircRx;
-	return pxCircRx->xTask;
-}
-
-void vCircRxTaskHandle(CircRxHandle_t xCircRx, TaskHandle_t xTask)
-{
-	CircRx_t *pxCircRx = xCircRx;
-	pxCircRx->xTask = xTask;
+	return xTaskNotifyFromISR(xCircRxTaskHandle(xCircRx), ulXfer, eSetValueWithOverwrite, pxWoken);
 }
