@@ -71,3 +71,11 @@ void vCircRxStreamBuffer(CircRxHandle_t xCircRx, StreamBufferHandle_t xStreamBuf
 TaskHandle_t xCircRxTaskHandle(CircRxHandle_t xCircRx);
 
 void vCircRxTaskHandle(CircRxHandle_t xCircRx, TaskHandle_t xTask);
+
+/*!
+ * \brief Notifies circular receiver task.
+ * \param ulXfer New circular transfer offset.
+ * \param pxWoken Assigned to `pdTRUE` if context switch required because a
+ * higher-priority task woke up.
+ */
+BaseType_t xCircRxNotifyFromISR(CircRxHandle_t xCircRx, UBaseType_t ulXfer, BaseType_t *pxWoken);
