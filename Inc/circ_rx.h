@@ -78,4 +78,4 @@ void vCircRxTaskHandle(CircRxHandle_t xCircRx, TaskHandle_t xTask);
  * \param pxWoken Assigned to `pdTRUE` if context switch required because a
  * higher-priority task woke up.
  */
-BaseType_t xCircRxNotifyFromISR(CircRxHandle_t xCircRx, UBaseType_t ulXfer, BaseType_t *pxWoken);
+BaseType_t xCircRxNotifyFromISR(CircRxHandle_t xCircRx, uint32_t ulXfer, BaseType_t *pxWoken);

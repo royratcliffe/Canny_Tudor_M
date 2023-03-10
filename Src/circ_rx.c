@@ -96,7 +96,7 @@ void vCircRxStreamBuffer(CircRxHandle_t xCircRx, StreamBufferHandle_t xStreamBuf
 	pxCircRx->pvSender = xStreamBuffer;
 }
 
-BaseType_t xCircRxNotifyFromISR(CircRxHandle_t xCircRx, UBaseType_t ulXfer, BaseType_t *pxWoken)
+BaseType_t xCircRxNotifyFromISR(CircRxHandle_t xCircRx, uint32_t ulXfer, BaseType_t *pxWoken)
 {
 	return xTaskNotifyFromISR(xCircRxTaskHandle(xCircRx), ulXfer, eSetValueWithOverwrite, pxWoken);
 }
