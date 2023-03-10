@@ -1,4 +1,4 @@
-/*
+/*!
  * \file rx_handler.c
  * \copyright (c) 2023, Roy Ratcliffe, Northumberland, United Kingdom
  *
